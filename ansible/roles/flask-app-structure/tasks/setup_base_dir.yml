@@ -1,0 +1,12 @@
+---
+
+- name: Create project base directory
+  file: path={{ project_base_dir }}/{{ project_name }} state=directory mode="0777"
+
+- name: Create base project files
+  file: path={{ item.value }} state=touch mode="0777"
+  with_dict: "{{ project_base_files }}"
+
+- name: Create project subdirs
+  file: path={{ item.value }} state=directory mode="0777"
+  with_dict: "{{ project_base_subdirs }}"

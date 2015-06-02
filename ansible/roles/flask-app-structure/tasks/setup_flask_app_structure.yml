@@ -1,4 +1,0 @@
----
-
-- name: Create project base directory
-  file: path={{ project_base_dir }}/{{ project_name }} state=directory mode="0777"
