@@ -21,6 +21,9 @@
   vars_files:
     - "{{vars_file}}"
 
+  roles:
+    - { role: flask-app-structure }
+
   tasks:
     - name: Echo hello world
       shell: echo "Hello World"
