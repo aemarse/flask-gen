@@ -1,0 +1,22 @@
+---
+
+- name: Create application directory
+  file: path={{ app_dir }} state=directory mode="0777"
+
+- name: Create application package dirs
+  file: path={{ item.value }} state=directory mode="0777"
+  with_dict: "{{ app_packages }}"
+
+- name: Create __init__.py in application package dirs
+  file: path={{ item.value }}/__init__.py state=touch mode="0777"
+  with_dict: "{{ app_packages }}"
+
+- name: Create application directories
+  file: path={{ item.value }} state=directory mode="0777"
+  with_dict: "{{ app_dirs }}"
+
+- name: Create app.py
+  file: path={{ app_dir }}/app.py state=touch mode="0777"
+
+- name: Create __init__.py
+  file: path={{ app_dir }}/__init__.py state=touch mode="0777"
